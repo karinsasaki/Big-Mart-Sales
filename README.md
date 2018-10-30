@@ -10,11 +10,11 @@ The data scientists at BigMart have collected 2013 sales data for 1559 products 
 Here are the features and their description.
 ![alt text](https://github.com/karinsasaki/Big-Mart-Sales/blob/master/features.png "Features")
 
-
 ## Imputing of missing values
 Several of the features had missing values or values that needed to be corrected.
 
 ### Item_Weight
+
 ![alt text](https://github.com/karinsasaki/Big-Mart-Sales/blob/master/missing_values_item_weight1.png "Item_Weight")
 
 ![alt text](https://github.com/karinsasaki/Big-Mart-Sales/blob/master/missing_values_item_weight2.png "Item_Weight")
@@ -107,9 +107,9 @@ Several of the features had missing values or values that needed to be corrected
 
 | Model             | Parameter Values | Validation dataset RMSE | CV score  |
 | ----------------- |:----------------:|:-----------------------:| :--------:|
-| Regression | - |  1143 | Mean - 1222 (+/- 142.71)| Std - 71.35 | Min - 1028 | Max - 1312 |   
-| Regression Ridge | alpha = 0.001 | 1143 | Mean - 1222 (+/- 143.25)| Std - 71.63 | Min - 1026 | Max - 1313 | 
-| Decision Tree Regressor | max_depth = 10.6, min_samples_leaf = 0.01| 1103 | Mean - 1180 (+/- 151.02)| Std - 75.51 | Min - 975.5 | Max - 1282 | 
+| Regression | - |  1143 | Mean - 1222 (+/- 142.71), Std - 71.35, Min - 1028, Max - 1312 |   
+| Regression Ridge | alpha = 0.001 | 1143 | Mean - 1222 (+/- 143.25), Std - 71.63, Min - 1026, Max - 1313 | 
+| Decision Tree Regressor | max_depth = 10.6, min_samples_leaf = 0.01| 1103 | Mean - 1180 (+/- 151.02), Std - 75.51 , Min - 975.5, Max - 1282 | 
 | Neural Network | coming soon | coming soon | coming soon |
 
 
