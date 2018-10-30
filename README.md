@@ -114,12 +114,15 @@ Correlation between Item_Visibility and Item_Number_Sales: -0.17440844918045084
 
 ## Baseline models
 - Average sales - Replace missing values by the average sales for all items. This is how the resulting data looks:
+
 ![alt text](https://github.com/karinsasaki/Big-Mart-Sales/blob/master/baseline_model_average.png "")
 
 - Average Sales by Item_Type_Category - Replace missing values by the average sales per Item_Type_Category from this pivot table:
+
 ![alt text](https://github.com/karinsasaki/Big-Mart-Sales/blob/master/baseline_model_item_type_category2.png "")
 
 This is how the resulting data looks:
+
 ![alt text](https://github.com/karinsasaki/Big-Mart-Sales/blob/master/baseline_model_item_type_category1.png "")
 
 - Average Sales by Product_Type_Category in Particular Outlet_Type - Replace missing values by the average sales per Item_Type_Category in each Outlet_Type from this pivot table:
@@ -127,11 +130,12 @@ This is how the resulting data looks:
 ![alt text](https://github.com/karinsasaki/Big-Mart-Sales/blob/master/baseline_model_item_type_category_outlet_type2.png "")
 
 This is how the resulting data looks:
+
 ![alt text](https://github.com/karinsasaki/Big-Mart-Sales/blob/master/baseline_model_item_type_category_outlet_type1.png "")
 
 ## Feature selection with Recursive Feature Elimination and a RandomForestRegressor
 
-Hot-coding of the categorical variables leaves a total of 56 features in total (numerical and categorical). Using Recursive Feature Elimination (rfe) from the sklearn package we choose the top 15 predictive features to build the rest of the  predictive model, while avoiding over-fitting. These are the features chosen:
+Hot-coding of the categorical variables leaves a total of 56 features in total (numerical and categorical). Using Recursive Feature Elimination (rfe) from the sklearn package we choose the top 16 predictive features to build the rest of the  predictive model, while avoiding over-fitting. These are the features chosen:
 
 ![alt text](https://github.com/karinsasaki/Big-Mart-Sales/blob/master/most_relevant_features.png '')
 
