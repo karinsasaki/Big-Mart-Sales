@@ -112,7 +112,7 @@ Correlation between Item_Visibility and Item_Number_Sales: -0.17440844918045084
 
 ## Models
 
-## Baseline models
+### Baseline models
 - Average sales - Replace missing values by the average sales for all items. This is how the resulting data looks:
 
 ![alt text](https://github.com/karinsasaki/Big-Mart-Sales/blob/master/baseline_model_average.png "")
@@ -133,13 +133,13 @@ This is how the resulting data looks:
 
 ![alt text](https://github.com/karinsasaki/Big-Mart-Sales/blob/master/baseline_model_item_type_category_outlet_type1.png "")
 
-## Feature selection with Recursive Feature Elimination and a RandomForestRegressor
+### Feature selection with Recursive Feature Elimination and a RandomForestRegressor
 
 Hot-coding of the categorical variables leaves a total of 56 features in total (numerical and categorical). Using Recursive Feature Elimination (rfe) from the sklearn package we choose the top 16 predictive features to build the rest of the  predictive model, while avoiding over-fitting. These are the features chosen:
 
 ![alt text](https://github.com/karinsasaki/Big-Mart-Sales/blob/master/most_relevant_features.png '')
 
-## Models performance comparison
+### Models performance comparison
 
 
 | Model             | Parameter Values | Validation dataset RMSE | CV score  |
