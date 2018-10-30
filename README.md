@@ -93,8 +93,6 @@ There is no correlation Item_MRP and Item_Number_Sales and there is a negative c
 
 ![alt text](https://github.com/karinsasaki/Big-Mart-Sales/blob/master/analysis_mrp_vs_outlet_sales.png "")
 
-![alt text](https://github.com/karinsasaki/Big-Mart-Sales/blob/master/analysis_mrp_vs_outlet_type.png "")
-
 ![alt text](https://github.com/karinsasaki/Big-Mart-Sales/blob/master/analysis_visibility_vs_number_sales.png "")
 
 ![alt text](https://github.com/karinsasaki/Big-Mart-Sales/blob/master/analysis_visibility_vs_outlet_sales.png "")
@@ -106,32 +104,45 @@ Correlation between Item_Visibility and Item_Outlet_Sales: -0.14076174687662235
 Correlation between Item_Visibility and Item_Number_Sales: -0.17440844918045084
 
 
-
 ## Preparation of data for model building
 - Numerical and One-Hot Coding of Categorical Variables¶
-- Standardisation of numerical data
+- Standardisation of numerical data - More on this later
 - Separate train and test datasets 
 
 
 ## Models
 
 ## Baseline models
-- Average sales
+- Average sales - Replace missing values by the average sales for all items. This is how the resulting data looks:
 ![alt text](https://github.com/karinsasaki/Big-Mart-Sales/blob/master/baseline_model_average.png "")
-- Average Sales by Item_Type_Category
-![alt text](https://github.com/karinsasaki/Big-Mart-Sales/blob/master/baseline_model_item_type_category1.png "")
+
+- Average Sales by Item_Type_Category - Replace missing values by the average sales per Item_Type_Category from this pivot table:
 ![alt text](https://github.com/karinsasaki/Big-Mart-Sales/blob/master/baseline_model_item_type_category2.png "")
-- Average Sales by Product_Type_Category in Particular Outlet_Type
-![alt text](https://github.com/karinsasaki/Big-Mart-Sales/blob/master/baseline_model_item_type_category_outlet_type1.png "")
+
+This is how the resulting data looks:
+![alt text](https://github.com/karinsasaki/Big-Mart-Sales/blob/master/baseline_model_item_type_category1.png "")
+
+- Average Sales by Product_Type_Category in Particular Outlet_Type - Replace missing values by the average sales per Item_Type_Category in each Outlet_Type from this pivot table:
+
 ![alt text](https://github.com/karinsasaki/Big-Mart-Sales/blob/master/baseline_model_item_type_category_outlet_type2.png "")
 
+This is how the resulting data looks:
+![alt text](https://github.com/karinsasaki/Big-Mart-Sales/blob/master/baseline_model_item_type_category_outlet_type1.png "")
+
 ## Feature selection with Recursive Feature Elimination and a RandomForestRegressor
+
+Hot-coding of the categorical variables leaves a total of 56 features in total (numerical and categorical). Using Recursive Feature Elimination (rfe) from the sklearn package we choose the top 15 predictive features to build the rest of the  predictive model, while avoiding over-fitting. These are the features chosen:
+
 ![alt text](https://github.com/karinsasaki/Big-Mart-Sales/blob/master/most_relevant_features.png '')
 
 ## Models performance comparison
 
+
 | Model             | Parameter Values | Validation dataset RMSE | CV score  |
 | ----------------- |:----------------:|:-----------------------:| :--------:|
+| Average Sales | - | 1652 | - |
+| Average Sales by Item_Type_Category | - | 1651 | - |
+| Average Sales by Product_Type_Category in Particular Outlet_Type | - | 1417 | - |
 | Regression | - |  1143 | Mean - 1222 (+/- 142.71), Std - 71.35, Min - 1028, Max - 1312 |   
 | Regression Ridge | alpha = 0.001 | 1143 | Mean - 1222 (+/- 143.25), Std - 71.63, Min - 1026, Max - 1313 | 
 | Decision Tree Regressor | max_depth = 10.6, min_samples_leaf = 0.01| 1103 | Mean - 1180 (+/- 151.02), Std - 75.51 , Min - 975.5, Max - 1282 | 
