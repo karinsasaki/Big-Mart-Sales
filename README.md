@@ -15,47 +15,65 @@ Several of the features had missing values or values that needed to be corrected
 
 ### Item_Weight
 
+We impute the missing values of the Item_Weight by the average Item_Weight of each Item_Identifier. We can see that the values we have chosen to replace the missing weights are reasonable as the boxplot of the affected outlets now follows the same pattern as the other outlets.
+
 ![alt text](https://github.com/karinsasaki/Big-Mart-Sales/blob/master/missing_values_item_weight1.png "Item_Weight")
 
 ![alt text](https://github.com/karinsasaki/Big-Mart-Sales/blob/master/missing_values_item_weight2.png "Item_Weight")
 
 ### Outlet_Size
 
-![alt text](https://github.com/karinsasaki/Big-Mart-Sales/blob/master/missing_values_outlet_size1.png "Outlet_size")
+Grocery Stores and Supermarkets of Type 1 have missing values, as shown in the image below.
 
-![alt text](https://github.com/karinsasaki/Big-Mart-Sales/blob/master/missing_values_outlet_size2.png "Outlet_size")
+![alt text](https://github.com/karinsasaki/Big-Mart-Sales/blob/master/missing_values_outlet_size5.png "Outlet_size")
 
-![alt text](https://github.com/karinsasaki/Big-Mart-Sales/blob/master/missing_values_outlet_size3.png "Outlet_size")
+Grocery Stores All the non missing values in Grocery Stores are 'small'. So all the missing values in Outlet_Size of Grocery Stores are replaced with 'small'. 
+
+All the other missing values in the rest of the data set are replaced with the mode values for each Store Type, from the pivot table below.
 
 ![alt text](https://github.com/karinsasaki/Big-Mart-Sales/blob/master/missing_values_outlet_size4.png "Outlet_size")
 
+
 ### Item_Visibility
+
+The min value of Item_Visibility is 0, but this can not be as every item must have some visibility.
 
 ![alt text](https://github.com/karinsasaki/Big-Mart-Sales/blob/master/missing_values_item_visibility1.png "Item_Visibiity")
 
+879 out of 14204 is a lot so we replace the 0 values for NAN values so the mean value is not affected.
+
+We impute missing values for each Item_Type in each Outlet_Type, from the pivot table below.
+
 ![alt text](https://github.com/karinsasaki/Big-Mart-Sales/blob/master/missing_values_item_visibility2.png "Item_Visibiity")
+
 
 ### Item_Fat_Content
 
+There are categories that can be conbined: Low Fat, low fat and LF are all Low Fat; reg and Regular are both Regular.
+
 ![alt text](https://github.com/karinsasaki/Big-Mart-Sales/blob/master/item_fat_content.png "Item_Fat_Content")
 
+
 ## Feature engineering
-- Combine Low Fat, low fat and LF to Low Fat and reg and Regular to Regular
-- Convert the Outlet_Establishment_Years into how old the establishments are
-- Create broader category for type of item
-- Change value of the 'Item_Fat_Content' of the items that are non-consumables
-- Make a new category for items that reflect their sales - very high, high, medium, low.
+
+We did the following feature engineering:
+- Converted the Outlet_Establishment_Years into how old the establishments are, feature Outlet_Age
+![alt text](https://github.com/karinsasaki/Big-Mart-Sales/blob/master/feature_engineering_outlet_age.png "Outlet_Age")
+- Created broader categories for type of item: Food, Drink and Non-Consumable. 
+- Changed value of the 'Item_Fat_Content' of the items that are non-consumables, to Non-Edible
+- Made a new category for items that reflect their sales: The Item_MRP illustrated in the image below clearly shows there are 4 different price categories. So we define them to be 'Low', 'Medium', 'High', 'Very High'.
 ![alt text](https://github.com/karinsasaki/Big-Mart-Sales/blob/master/feature_engineering_feature_engineering.png "sales_category")
-- Item_Number_Sales
+- The Item_MRP does not change significantly accross the stores: 
+
+![alt text](https://github.com/karinsasaki/Big-Mart-Sales/blob/master/analysis_mrp_outlet_type.png)
+
+The Item_Outlet_Sales is the number of items sold times the Item_MRP. So we made a new variable with the number of items sold (by dividing the Item_Outlet_Sales by Item_MRP).
+
+![alt text](https://github.com/karinsasaki/Big-Mart-Sales/blob/master/analysis_item_number_sales1.png)
+
 
 
 ## Preliminary Analysis
-
-### Item_MRP
-
-![alt text]( "")
-
-### Item_Outlet_Sales
 
 ### Item_Number_Sales
 
@@ -67,6 +85,10 @@ Several of the features had missing values or values that needed to be corrected
 
 ### Item_outlet_sales and Item_MRP vs Item_Visibility
 
+There is a positive correlation between Item_MRP and Item_Outlet_Sales and a negative correlation between Item_Outlet_Sales and visibility.
+
+There is no correlation Item_MRP and Item_Number_Sales and there is a negative correlation between Item_Number_Sales and visibility.
+
 ![alt text](https://github.com/karinsasaki/Big-Mart-Sales/blob/master/analysis_mrp_vs_number_sales.png "")
 
 ![alt text](https://github.com/karinsasaki/Big-Mart-Sales/blob/master/analysis_mrp_vs_outlet_sales.png "")
@@ -77,9 +99,12 @@ Several of the features had missing values or values that needed to be corrected
 
 ![alt text](https://github.com/karinsasaki/Big-Mart-Sales/blob/master/analysis_visibility_vs_outlet_sales.png "")
 
-### Categorical Data¶
+Correlation between Item_MRP and Item_Outlet_Sales: 0.5675744466569193
+Correlation between Item_MRP and Item_Number_Sales: 0.01114352701232483
 
-![alt text](https://github.com/karinsasaki/Big-Mart-Sales/blob/master/analysis_categorical_data.png "")
+Correlation between Item_Visibility and Item_Outlet_Sales: -0.14076174687662235
+Correlation between Item_Visibility and Item_Number_Sales: -0.17440844918045084
+
 
 
 ## Preparation of data for model building
