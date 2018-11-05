@@ -150,6 +150,6 @@ Hot-coding of the categorical variables leaves a total of 56 features in total (
 | Regression | - |  1143 | Mean - 1222 (+/- 142.71), Std - 71.35, Min - 1028, Max - 1312 |   
 | Regression Ridge | alpha = 0.001 | 1143 | Mean - 1222 (+/- 143.25), Std - 71.63, Min - 1026, Max - 1313 | 
 | Decision Tree Regressor | max_depth = 10.6, min_samples_leaf = 0.01| 1103 | Mean - 1180 (+/- 151.02), Std - 75.51 , Min - 975.5, Max - 1282 | 
-| Neural Network | coming soon | coming soon | coming soon |
+| Neural Network | layers = 3, nodes/layer = 100 | 1101 | - |
 
 
